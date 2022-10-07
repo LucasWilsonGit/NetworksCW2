@@ -2,6 +2,7 @@ import time, socket, select, re, threading
 from hashlib import sha256
 
 class Message:
+    """Message class, wraps behaviours serializing data to protocol packet format"""
     def __init__(self, FromStr=None, Body=None, ToStr = None, SubjectStr=None, TopicStr=None, Time=None):
         self.ID = ""
         if Time:
@@ -114,7 +115,7 @@ validheaders = {
 #implemented headers 
 
 print("Please ensure a server is running before attempting to connect!")
-#to avoid any f*** ups with braindead end users
+#wetware sanity test
 
 class SocketClient:
     def __init__(self, addr, port):
@@ -161,7 +162,6 @@ client.sentprotocol = True
 #attempts connection to a Server booted and running on host:port
 #will not let host be 127.0.0.1 or localhost, must be routed by the network router to be external
 #since on windows machines connecting to localhost can cause OSErrors but getting routed by the router is fine
-#cool isn't it... 
 
 def polluser():
     """
